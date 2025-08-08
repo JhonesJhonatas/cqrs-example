@@ -2,10 +2,12 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { randomUUID } from 'crypto';
 import { HydratedDocument } from 'mongoose';
 
+import { UserEntity } from '@/domain/user/entities/user-entity';
+
 export type UserDocument = HydratedDocument<User>;
 
 @Schema()
-export class User {
+export class User implements UserEntity {
   @Prop({ required: true, default: randomUUID() })
   id: string;
 

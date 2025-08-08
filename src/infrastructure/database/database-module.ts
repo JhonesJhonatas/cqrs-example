@@ -1,13 +1,18 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { UserSchema } from '@infrastructure/entities/user-schema';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb://admin:password@localhost:27017/cqrs_db?authSource=admin',
-    ),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        uri: configService.get<string>('MONGO_DATABASE_URL'),
+      }),
+      inject: [ConfigService],
+    }),
     MongooseModule.forFeature([
       {
         name: 'User',
@@ -17,5 +22,13 @@ import { UserSchema } from '@infrastructure/entities/user-schema';
   ],
   controllers: [],
   providers: [],
+  exports: [
+    MongooseModule.forFeature([
+      {
+        name: 'User',
+        schema: UserSchema,
+      },
+    ]),
+  ],
 })
 export class DatabaseModule {}

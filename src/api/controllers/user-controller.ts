@@ -1,8 +1,9 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
 import { CreateUserCommand } from '@/application/user/commands/crate-user-command';
 import { ListUsersQuery } from '@/application/user/querys/list-users-query';
+import { CreateUserDto } from '@api/dtos/create-user-dto';
 
 @Controller('user')
 export class UserController {
@@ -12,12 +13,8 @@ export class UserController {
   ) {}
 
   @Post('/create')
-  async create() {
-    const command = new CreateUserCommand(
-      'Jhones',
-      'jhones@example.com',
-      'password123',
-    );
+  async create(@Body() { name, email, password }: CreateUserDto) {
+    const command = new CreateUserCommand(name, email, password);
 
     await this.commandBus.execute(command);
   }
