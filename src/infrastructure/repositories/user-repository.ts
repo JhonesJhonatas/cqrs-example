@@ -14,4 +14,8 @@ export class UserRepository implements UserRepositoryInterface {
     const user = new this.userModel(props);
     await user.save();
   }
+
+  async listUsers(): Promise<User[]> {
+    return this.userModel.find().exec();
+  }
 }

@@ -3,7 +3,6 @@ import { ConfigModule } from '@nestjs/config';
 
 import { ApiModule } from '@api/api-module';
 import { ApplicationModule } from '@application/application-module';
-import { DomainModule } from '@domain/domain-module';
 import { InfrastructureModule } from '@infrastructure/infrastructure-module';
 
 @Module({
@@ -11,7 +10,6 @@ import { InfrastructureModule } from '@infrastructure/infrastructure-module';
     ConfigModule.forRoot(),
     ApiModule,
     ApplicationModule,
-    DomainModule,
     InfrastructureModule,
   ],
 })

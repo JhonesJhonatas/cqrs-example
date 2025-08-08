@@ -12,8 +12,6 @@ export class CreateUserHandler implements ICommandHandler<CreateUserCommand> {
   }
 
   async execute(command: CreateUserCommand): Promise<void> {
-    console.log('Creating user with details:', command);
-
     await this.userRepository.create(command);
   }
 }

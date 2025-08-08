@@ -4,6 +4,7 @@ import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreateUserCommand } from '@/application/user/commands/crate-user-command';
 import { ListUsersQuery } from '@/application/user/querys/list-users-query';
 import { CreateUserDto } from '@api/dtos/create-user-dto';
+import { User } from '@/infrastructure/entities/user-schema';
 
 @Controller('user')
 export class UserController {
@@ -21,8 +22,8 @@ export class UserController {
 
   @Get('/list-users')
   async listUsers() {
-    const query = new ListUsersQuery();
+    const users: User[] = await this.queryBus.execute(new ListUsersQuery());
 
-    await this.queryBus.execute(query);
+    return users;
   }
 }

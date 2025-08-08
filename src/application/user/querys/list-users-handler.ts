@@ -2,23 +2,21 @@ import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 
 import { ListUsersQuery } from '@application/user/querys/list-users-query';
 import { UserEntity } from '@/domain/user/entities/user-entity';
+import { UserRepository } from '@/infrastructure/repositories/user-repository';
 
 @QueryHandler(ListUsersQuery)
 export class ListUsersHandler implements IQueryHandler<ListUsersQuery> {
-  async execute(query: ListUsersQuery): Promise<void> {
+  private readonly userRepository: UserRepository;
+
+  constructor(userRepository: UserRepository) {
+    this.userRepository = userRepository;
+  }
+
+  async execute(query: ListUsersQuery): Promise<UserEntity[]> {
     console.log(query);
 
-    const fakeUser = new UserEntity(
-      'user-id-123',
-      'Jhones',
-      'jhones@example.com',
-      'password123',
-      new Date(),
-      new Date(),
-    );
+    const users: UserEntity[] = await this.userRepository.listUsers();
 
-    console.log([fakeUser]);
-
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return users;
   }
 }
