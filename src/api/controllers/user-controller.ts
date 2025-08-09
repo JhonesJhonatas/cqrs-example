@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
-import { CreateUserCommand } from '@/application/user/commands/crate-user-command';
+import { CreateUserCommand } from '@/application/user/commands/create-user-command';
 import { ListUsersQuery } from '@/application/user/querys/list-users-query';
 import { CreateUserDto } from '@api/dtos/create-user-dto';
 import { User } from '@/infrastructure/entities/user-schema';

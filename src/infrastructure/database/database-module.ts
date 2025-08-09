@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { UserSchema } from '@infrastructure/entities/user-schema';
+import { RoleSchema } from '@infrastructure/entities/role-schema';
 
 @Module({
   imports: [
@@ -18,6 +19,10 @@ import { UserSchema } from '@infrastructure/entities/user-schema';
         name: 'User',
         schema: UserSchema,
       },
+      {
+        name: 'Role',
+        schema: RoleSchema,
+      },
     ]),
   ],
   controllers: [],
@@ -27,6 +32,10 @@ import { UserSchema } from '@infrastructure/entities/user-schema';
       {
         name: 'User',
         schema: UserSchema,
+      },
+      {
+        name: 'Role',
+        schema: RoleSchema,
       },
     ]),
   ],
