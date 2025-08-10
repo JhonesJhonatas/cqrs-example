@@ -1,16 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
-import { ApiModule } from '@api/api-module';
-import { ApplicationModule } from '@application/application-module';
-import { InfrastructureModule } from '@infrastructure/infrastructure-module';
+import { IamModule } from '@iam/iam-module';
+import { WorkspaceModule } from '@workspace/workspace-module';
+import { DatabaseModule } from '@shared/infrastructure/database/database-module';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot(),
-    ApiModule,
-    ApplicationModule,
-    InfrastructureModule,
-  ],
+  imports: [ConfigModule.forRoot(), DatabaseModule, IamModule, WorkspaceModule],
+  providers: [],
 })
 export class AppModule {}
