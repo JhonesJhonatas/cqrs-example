@@ -4,7 +4,7 @@ import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreateUserCommand } from '@/application/user/commands/create-user-command';
 import { ListUsersQuery } from '@/application/user/querys/list-users-query';
 import { CreateUserDto } from '@api/dtos/create-user-dto';
-import { User } from '@/infrastructure/entities/user-schema';
+import { User } from '@/infrastructure/entities/user';
 
 @Controller('user')
 export class UserController {

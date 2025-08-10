@@ -14,6 +14,9 @@ async function bootstrap() {
     }),
   );
 
+  process.on('uncaughtException', console.error);
+  process.on('unhandledRejection', console.error);
+
   await app.listen(process.env.PORT ?? 3000).then(() => {
     console.log(`🗲 - Running on PORT: ${process.env.PORT}`);
   });

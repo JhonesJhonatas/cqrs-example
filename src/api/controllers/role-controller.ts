@@ -4,7 +4,7 @@ import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreateRoleDto } from '@api/dtos/create-role-dto';
 import { CreateRoleCommand } from '@/application/user/commands/create-role-command';
 import { ListRolesQuery } from '@/application/user/querys/list-roles-query';
-import { Role } from '@/infrastructure/entities/role-schema';
+import { Role } from '@/infrastructure/entities/role';
 
 @Controller('role')
 export class RoleController {
