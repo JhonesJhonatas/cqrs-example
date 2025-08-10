@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm';
 import { getDataSourceToken } from '@nestjs/typeorm';
 
-import { User } from '../entities/user';
+import { User } from '@iam/infrastructure/entities/user';
 
 export const UserProvider = {
   provide: 'USER_REPOSITORY',

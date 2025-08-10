@@ -1,10 +1,10 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
-import { CreateRoleDto } from '../dtos/role/create-role-dto';
-import { CreateRoleCommand } from '../../application/commands/role/create-role-command';
-import { ListRolesQuery } from '../../application/querys/role/list-roles-query';
-import { Role } from '../../infrastructure/entities/role';
+import { CreateRoleDto } from '@iam/api/dtos/role/create-role-dto';
+import { CreateRoleCommand } from '@iam/application/commands/role/create-role-command';
+import { ListRolesQuery } from '@iam/application/querys/role/list-roles-query';
+import { Role } from '@iam/infrastructure/entities/role';
 
 @Controller('role')
 export class RoleController {

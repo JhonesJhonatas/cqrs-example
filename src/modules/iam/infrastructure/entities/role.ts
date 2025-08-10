@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { RoleEntity } from '../../domain/entities/role-entity';
+import { RoleEntity } from '@iam/domain/entities/role-entity';
 
 @Entity()
 export class Role implements RoleEntity {

@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm';
 import { getDataSourceToken } from '@nestjs/typeorm';
 
-import { Role } from '../entities/role';
+import { Role } from '@iam/infrastructure/entities/role';
 
 export const RoleProvider = {
   provide: 'ROLE_REPOSITORY',

@@ -1,10 +1,10 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
-import { CreateUserDto } from '../dtos/user/create-user-dto';
-import { CreateUserCommand } from '../../application/commands/user/create-user-command';
-import { ListUsersQuery } from '../../application/querys/user/list-users-query';
-import { User } from '../../infrastructure/entities/user';
+import { CreateUserDto } from '@iam/api/dtos/user/create-user-dto';
+import { CreateUserCommand } from '@iam/application/commands/user/create-user-command';
+import { ListUsersQuery } from '@iam/application/querys/user/list-users-query';
+import { User } from '@iam/infrastructure/entities/user';
 
 @Controller('user')
 export class UserController {
